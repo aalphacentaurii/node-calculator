@@ -15,7 +15,6 @@ class IOController implements IIO {
     getResult = ( data: string ): number | string => {
         try {
             data = this.Utils.clearString( data );
-    
             switch ( data ) {
             
                 case "help": {

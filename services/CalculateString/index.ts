@@ -50,12 +50,12 @@ class CalculateStringService implements ICalculateString {
           } else if ( char === '(' ) {
             operators.push(char);
           } else if (!isNaN( char as unknown as number )) {
-            let num = parseFloat( char );
-            while ( i + 1 < expression.length && !isNaN( expression[i + 1] as unknown as number ) ) {
-              num = num * 10 + parseFloat( expression[i + 1] );
+            let num = char;
+            while ( i + 1 < expression.length && (!isNaN( expression[i + 1] as unknown as number ) || expression[i + 1] == ".") ) {
+              num = num.toString() + expression[i + 1]
               i++;
             }
-            values.push(num);
+            values.push(parseFloat(num));
           } else if (char === ')') {
             while (
               operators.length > 0 &&
