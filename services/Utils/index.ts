@@ -1,13 +1,15 @@
 import { IUtils } from "../../interfaces/utils";
 
 class Utils implements IUtils {
-    private _removeN( data: string ): string {
-        if ( data.match('\n') ) { 
-            return  data.replace('\n', ""); 
+    
+    private _removeWinShit( data: string ): string {
+
+        switch( true ) {
+            case !!data.match('\n'): data = data.replace('\n', "");
+            case !!data.match('\r'): return data.replace('\r', "");
+            default: return data;
         }
-        else {
-            return data;
-        }
+    
     }
     
     private _removeSpace( data: string ): string {
@@ -15,7 +17,7 @@ class Utils implements IUtils {
     }
     
     clearString( data: string ): string {
-        return this._removeSpace( this._removeN( data ) );
+        return this._removeSpace( this._removeWinShit( data ) );
     }
 
     checkExpression = ( data: string ): boolean => {

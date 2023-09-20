@@ -16,7 +16,7 @@ class IOController implements IIO {
         try {
             data = this.Utils.clearString( data );
             switch ( data ) {
-            
+                
                 case "help": {
                     const result = 
                     "'+' - example: 16 + 2 => 18 \n" +
